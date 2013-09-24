@@ -5,8 +5,8 @@ puppet-extract
 
 * [Homepage](https://github.com/blom/puppet-extract)
 
-Extracts an archive file and optionally downloads it first (expects `curl`
-to be installed).
+Puppet module for downloading and extracting archives. Requires `curl` to be
+installed.
 
 Usage
 -----
