@@ -1,0 +1,8 @@
+name "blom-extract"
+version "0.0.0"
+author "Ørjan Blom"
+project_page "https://github.com/blom/puppet-extract"
+source "https://github.com/blom/puppet-extract"
+license "ISC"
+summary "Downloads and extracts archives"
+description "Downloads and extracts archives"

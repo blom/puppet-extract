@@ -1,0 +1,5 @@
+extract { '':
+  url     => '',
+  target  => '',
+  creates => '',
+}
