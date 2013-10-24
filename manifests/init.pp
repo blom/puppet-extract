@@ -1,5 +1,6 @@
 #
 define extract(
+  $file    = undef,
   $url     = undef,
   $target  = undef,
   $creates = undef,
@@ -13,27 +14,32 @@ define extract(
   if $target  == undef { fail('target must be present') }
   if $creates == undef { fail('creates must be present') }
 
+  $archive_file = $file ? {
+    undef   => $title,
+    default => $file,
+  }
+
   if $url {
-    exec { "download ${url} to ${title}":
-      command => "curl -L ${url} -o ${title}",
-      onlyif  => ["test ! -e ${title}", "test ! -e ${creates}"],
+    exec { "download ${url} to ${archive_file}":
+      command => "curl -L ${url} -o ${archive_file}",
+      onlyif  => ["test ! -e ${archive_file}", "test ! -e ${creates}"],
     }
   }
 
   $extract_require = $url ? {
     undef   => undef,
-    default => Exec["download ${url} to ${title}"],
+    default => Exec["download ${url} to ${archive_file}"],
   }
-  exec { "extract ${title}":
-    command => "tar x${taropts}f ${title} -C ${target}",
+  exec { "extract ${archive_file}":
+    command => "tar x${taropts}f ${archive_file} -C ${target}",
     require => $extract_require,
     creates => $creates,
   }
 
   if $purge {
-    file { $title:
+    file { $archive_file:
       ensure  => absent,
-      require => Exec["extract ${title}"],
+      require => Exec["extract ${archive_file}"],
     }
   }
 }

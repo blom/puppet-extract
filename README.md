@@ -19,6 +19,7 @@ Usage
 
 Takes the following attributes:
 
+* `file` (optional): Archive file location, overrides title (default: `undef`).
 * `url` (optional): Where to download the archive (default: `undef`).
 * `target` (required): Where to extract the archive (default: `undef`).
 * `creates` (required): Directory created when extracted (default: `undef`).
