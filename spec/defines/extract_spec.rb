@@ -87,7 +87,7 @@ describe "extract" do
     specify do
       expect {
         should contain_file(title)
-      }.to raise_error(Puppet::Error, /target must be present/)
+      }.to raise_error(Puppet::Error, /Must pass target/)
     end
   end
 
@@ -99,7 +99,7 @@ describe "extract" do
     specify do
       expect {
         should contain_file(title)
-      }.to raise_error(Puppet::Error, /creates must be present/)
+      }.to raise_error(Puppet::Error, /Must pass creates/)
     end
   end
 end

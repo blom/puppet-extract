@@ -1,18 +1,15 @@
 #
 define extract(
+  $target,
+  $creates,
   $file    = undef,
   $url     = undef,
-  $target  = undef,
-  $creates = undef,
   $taropts = '',
   $purge   = false
 ) {
   Exec {
     path => '/bin:/usr/bin:/usr/local/bin',
   }
-
-  if $target  == undef { fail('target must be present') }
-  if $creates == undef { fail('creates must be present') }
 
   $archive_file = $file ? {
     undef   => $title,
