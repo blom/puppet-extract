@@ -18,7 +18,7 @@ define extract(
 
   if $url {
     exec { "download ${url} to ${archive_file}":
-      command => "curl -L ${url} -o ${archive_file}",
+      command => "curl -L ${url} -o ${archive_file}.tmp && mv ${archive_file}.tmp ${archive_file}",
       onlyif  => ["test ! -e ${archive_file}", "test ! -e ${creates}"],
     }
   }

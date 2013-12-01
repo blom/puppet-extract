@@ -2,6 +2,7 @@ require "rake/clean"
 require "rspec/core/rake_task"
 require "puppet-lint/tasks/puppet-lint"
 
+PuppetLint.configuration.disable_80chars
 CLOBBER.include %w(.yardoc doc pkg)
 task :default => [:spec, :lint]
 

@@ -22,7 +22,7 @@ describe "extract" do
   end
 
   it { should contain_exec("download #{url} to #{archive_file}").
-              with_command("curl -L #{url} -o #{archive_file}").
+              with_command("curl -L #{url} -o #{archive_file}.tmp && mv #{archive_file}.tmp #{archive_file}").
               with_onlyif(["test ! -e #{archive_file}",
                            "test ! -e #{creates}"]) }
 
