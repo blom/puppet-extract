@@ -8,6 +8,13 @@ puppet-extract
 Puppet module for downloading and extracting archives. Requires `curl` to be
 installed.
 
+Installation
+------------
+
+### Puppetfile
+
+    mod "extract", :git => "https://github.com/blom/puppet-extract.git"
+
 Usage
 -----
 
